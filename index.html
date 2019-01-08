@@ -22,6 +22,7 @@
   <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
   <script type="text/javascript" src="js/utils.js"></script>
   <script type="text/javascript" src="js/player.js"></script>
+  <script type="text/javascript" src="js/pubnub.min.js"></script>
   <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -32,6 +33,16 @@
     const BACKEND_URL = 'https://localhost';
     const IMAGES = ['background.jpg', 'nufsz.jpg']
     var preloaded = {};
+
+    var pubnub = PUBNUB.init({subscribe_key:'sub-c-eac1b55e-1107-11e9-811d-920db38128ca',ssl:true});
+    pubnub.subscribe({
+        channel  : 'demo',
+        callback : function(response) {
+          console.log(response);
+          //addInteractiveObject(response);            
+        }
+    });
+
 
     window.onload = function() {
       init_page();
