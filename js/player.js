@@ -26,7 +26,7 @@ function initStreamName(){
 }
 
 function init_page() {
-    // initStreamName();
+    initStreamName();
     console.log("Stream Name after fetch: " + streamName);
     //video display
     remoteVideo = document.getElementById("remoteVideo");
