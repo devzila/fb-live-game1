@@ -25,6 +25,14 @@ video:-webkit-full-screen {
     text-align: center;
 }
 
+#interactive_container {
+    width: 330px;
+    height: 600px;
+    position: absolute;
+    color: white;
+    z-index: 2147483648 !important;
+}
+
 .player {
     box-sizing: border-box;
     height: 40px;
