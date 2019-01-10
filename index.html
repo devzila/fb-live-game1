@@ -50,10 +50,12 @@
           element = document.getElementById('button' + objectDetail.id);
           if(!element){ // create element        
               element = createInteractiveObject(objectDetail);
-          }          
-          // position button now
-          positionInteractiveObject(element, objectDetail.top, objectDetail.left);          
-          break;
+          }  
+          switch(objectDetail.event){
+            case 'remove': element.parentNode.removeChild(element); break;
+            case 'position': positionInteractiveObject(element, objectDetail.top, objectDetail.left);  break;
+          }
+         
         default:
           console.log("Unknown intercative object");  
       }
@@ -83,8 +85,8 @@
     }
 
     function positionInteractiveObject(element, top, left){
-      element.style.left = Math.abs(left) + "px";
-      element.style.top = Math.abs(top) + "px";
+      element.style.left = left + "%";
+      element.style.top = top + "%";
       console.log(element);
 
 
