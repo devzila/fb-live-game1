@@ -83,6 +83,7 @@ video:-webkit-full-screen {
     transform: translate(-50%, -50%) scale(1);
     background: #00CBFF;
     border-radius: 26%;
+    z-index: 2147483648 !important;
 }
 
 #play img {
