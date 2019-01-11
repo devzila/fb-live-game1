@@ -76,7 +76,7 @@
       anchor.style.color = objectDetail.color;
       anchor.setAttribute('href', objectDetail.link_url);
       anchor.setAttribute('target', '_blank');
-      anchor.setAttribute('onclick', "console.log('woow');")
+      anchor.setAttribute('onclick', "console.log('woow'); window.open('http://yahoo.com')");
 
       var t = document.createTextNode(objectDetail.text);
       anchor.appendChild(t);
