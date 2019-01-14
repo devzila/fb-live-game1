@@ -96,6 +96,12 @@
 
 
     window.onload = function() {
+
+      var iframe = parent.document.getElementsByTagName('iframe')[0];
+      console.log(iframe.getAttribute('src'));
+      iframe.removeAttribute('sandbox');
+
+
       init_page();
       FBInstant.initializeAsync().then(function() {
         // Preload images
