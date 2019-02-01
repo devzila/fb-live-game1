@@ -62,7 +62,7 @@
                             positionInteractiveObject(element, objectDetail.top, objectDetail.left);
                             break;
                     }
-
+                    break;
                 default:
                     console.log("Unknown intercative object");
             }
@@ -81,7 +81,7 @@
             var anchor = document.createElement('a');
             anchor.setAttribute('class', 'interaction-button');
             anchor.style.color = objectDetail.color;
-            anchor.setAttribute('onclick', "$('#form-overlay').addClass('active')");
+            anchor.setAttribute('onclick', "showOverlay('" + objectDetail.link_url +"')");
 
             var t = document.createTextNode(objectDetail.text);
             anchor.appendChild(t);
@@ -202,23 +202,46 @@
 
 
 
-            <div id="form-overlay">
-              <div class="form-wrapper">
-                  <button class="close-overlay" onclick="$('#form-overlay').removeClass('active')">&times;</button>
-                  <div class="form-row">
+    <div id="form-overlay">
+      <div class="form-wrapper">
+          <button class="close-overlay" onclick="$('#form-overlay').removeClass('active')">&times;</button>
+          <div id="overlayContent">
+          </div>    
+      </div>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+           $(".form-wrapper").draggable();
+           $("body").on('click', 'input', function() {
+             $(this).trigger('focus');
+             $(this).trigger("tap"); 
+           });
+           
+        });
+
+        function showOverlay(imageLink){
+            $('#form-overlay').addClass('active');
+            if(imageLink){
+                $("#overlayContent").html("<img style='max-height:250px; max-width:100%' src='" + imageLink + "'>");
+            }
+            else{
+                var html = `
+                  <div class="form-row" style="z-index: 2000000">
                       <label>Name</label>
-                      <div class="form-field"><input type="text" name="button-name" /></div>
+                      <div class="form-field"><input type="text" id="inputname" name="button-name" /></div>
                   </div>
                   <div class="form-row">
                       <label>Email Id</label>
-                      <div class="form-field"><input type="text" name="button-text" /></div>
+                      <div class="form-field"><input type="text"  id="inputemail"  name="button-text" /></div>
                   </div>
                   <div class="form-row">
                       <div class="form-field"><input type="submit" value="Submit" onclick="submitForm();" /></div>
                   </div>
-              </div>
-            </div>
-
+                `;
+               $("#overlayContent").html(html); 
+            }
+        }
+    </script>
   <script src="js/main.js?a=142"></script>
 
 </body>
