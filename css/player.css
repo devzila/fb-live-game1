@@ -30,8 +30,8 @@ object {
 }
 
 #interactive_container {
-    width: 330px;
-    height: 600px;
+    width: 360px;
+    height: 90%;
     position: absolute;
     color: white;
     z-index: 2147483648 !important;
@@ -54,12 +54,12 @@ object {
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
+    background-color: black;
 }
 
 .video {
     margin: 0px auto;
     height: 100%;
-    background: #000;
 }
 
 .video:hover .player {
