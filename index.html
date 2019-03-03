@@ -74,17 +74,16 @@
             div.setAttribute('id', objectDetail.type + objectDetail.id);
             div.style.left = "10px";
             div.style.top = "10px";
-            div.style.backgroundColor = objectDetail.bg_color;
-            div.style.color = objectDetail.color;
             div.style.position = 'relative';
 
             var anchor = document.createElement('a');
             anchor.setAttribute('class', 'interaction-button');
-            anchor.style.color = objectDetail.color;
-            anchor.setAttribute('onclick', "showOverlay('" + objectDetail.link_url +"')");
+            anchor.setAttribute('onclick', "copyToClipboard('" + objectDetail.link_url +"')");
 
-            var t = document.createTextNode(objectDetail.text);
-            anchor.appendChild(t);
+            var img = document.createElement('img');
+            img.setAttribute('src', 'images/' + objectDetail.btn_name + '.png');
+            img.setAttribute('width', '32');
+            anchor.appendChild(img);
 
             div.appendChild(anchor);
             document.getElementById("interactive_container").appendChild(div);
@@ -240,6 +239,18 @@
                 `;
                $("#overlayContent").html(html); 
             }
+        }
+
+        function copyToClipboard(copyText){
+            const el = document.createElement('textarea');
+            el.value = copyText;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
         }
     </script>
   <script src="js/main.js?a=142"></script>
